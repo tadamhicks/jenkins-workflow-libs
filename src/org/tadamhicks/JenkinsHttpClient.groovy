@@ -54,6 +54,6 @@ class JenkinsHttpClient {
         def resp = httpRequest.delete(url)
                 .header("User-Agent", userAgent)
                 .send()
-        return resp
+        return resp.bodyText()
     }
 }
