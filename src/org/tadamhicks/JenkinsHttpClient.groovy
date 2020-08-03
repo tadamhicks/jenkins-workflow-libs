@@ -22,8 +22,9 @@ class JenkinsHttpClient {
      * @return response body as String
      */
     def get(String url, String bearerToken) {
+	String token = 'BEARER' + bearerToken
         def resp = httpRequest.get(url)
-                .header('Authorization', bearerToken)
+                .header('Authorization', token)
                 .send()
         return resp.bodyText()
     }
@@ -50,9 +51,10 @@ class JenkinsHttpClient {
      * @param url
      * @return
      */
-    def delete(String url) {
+    def delete(String url, String bearerToken) {
+	String token = 'BEARER' + bearerToken
         def resp = httpRequest.delete(url)
-                .header("User-Agent", userAgent)
+                .header('Authorization', token)
                 .send()
         return resp.bodyText()
     }
